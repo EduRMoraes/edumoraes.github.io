@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experiência de Eduardo Ramalho Moraes em Quality Assurance, estratégia de testes, validação de software e liderança de qualidade.">
+    <title>Quality Assurance — Eduardo Ramalho Moraes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #171717;
+            --border: #292929;
+            --border-light: #3a3a3a;
+            --white: #f5f5f5;
+            --muted: #858585;
+            --accent: #a78bfa;
+            --display: "Space Grotesk", sans-serif;
+            --body: "Inter", sans-serif;
+            --mono: "DM Mono", monospace;
+            --max-width: 1180px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--background);
+            color: var(--white);
+            font-family: var(--body);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: .035;
+            background-image:
+                linear-gradient(to right, #fff 1px, transparent 1px),
+                linear-gradient(to bottom, #fff 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        a { color: inherit; text-decoration: none; }
+        ::selection { background: var(--white); color: var(--background); }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(calc(100% - 48px), var(--max-width));
+            height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            background: rgba(10,10,10,.86);
+            backdrop-filter: blur(18px);
+        }
+        .logo {
+            font-family: var(--display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -.08em;
+        }
+        .logo span, .accent { color: var(--accent); }
+        .header-nav { display: flex; gap: 34px; }
+        .header-nav a, .header-action {
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            transition: color .25s ease;
+        }
+        .header-nav a:hover { color: var(--white); }
+        .header-action {
+            color: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            padding: 11px 16px;
+        }
+        .header-action span { color: var(--accent); margin-left: 8px; }
+
+        .container { width: min(calc(100% - 48px), var(--max-width)); margin: auto; }
+        .eyebrow {
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .13em;
+        }
+        .hero {
+            min-height: 790px;
+            padding: 170px 0 110px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-left: 1px solid rgba(255,255,255,.06);
+            border-right: 1px solid rgba(255,255,255,.06);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 760px; }
+        .hero h1 {
+            margin: 28px 0 24px;
+            font-family: var(--display);
+            font-size: clamp(4.5rem, 10vw, 9rem);
+            line-height: .82;
+            letter-spacing: -.085em;
+            text-transform: uppercase;
+        }
+        .hero h1 span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(245,245,245,.72);
+        }
+        .hero-subtitle {
+            color: var(--white);
+            font-family: var(--mono);
+            font-size: .7rem;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+        .hero-description {
+            max-width: 590px;
+            margin: 28px 0 34px;
+            color: var(--muted);
+            font-size: .95rem;
+            line-height: 1.85;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 24px;
+            padding: 15px 19px;
+            border: 1px solid var(--border-light);
+            font-family: var(--mono);
+            font-size: .64rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            transition: .3s ease;
+        }
+        .button-primary { background: var(--white); color: var(--background); border-color: var(--white); }
+        .button-primary:hover { background: transparent; color: var(--white); }
+        .button span { color: var(--accent); }
+        .button-primary span { color: var(--background); }
+        .button-primary:hover span { color: var(--accent); }
+
+        .hero-mark {
+            position: absolute;
+            right: 4%;
+            top: 50%;
+            transform: translateY(-45%);
+            width: min(34vw, 420px);
+            aspect-ratio: 1;
+            border: 1px solid rgba(255,255,255,.12);
+            transform-origin: center;
+            rotate: 45deg;
+        }
+        .hero-mark::before, .hero-mark::after {
+            content: "";
+            position: absolute;
+            inset: 15%;
+            border: 1px solid rgba(167,139,250,.28);
+        }
+        .hero-mark::after { inset: 30%; border-color: rgba(255,255,255,.18); }
+        .hero-mark-core {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            rotate: -45deg;
+            font-family: var(--display);
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: -.1em;
+        }
+        .hero-mark-core span { color: var(--accent); }
+
+        .section { padding: 115px 0; border-top: 1px solid var(--border); }
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 40px;
+            margin-bottom: 54px;
+        }
+        .section-heading h2 {
+            margin-top: 14px;
+            font-family: var(--display);
+            font-size: clamp(2.8rem, 5vw, 5rem);
+            line-height: .9;
+            letter-spacing: -.07em;
+        }
+        .section-intro {
+            max-width: 390px;
+            color: var(--muted);
+            font-size: .85rem;
+            line-height: 1.8;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 70px;
+            align-items: start;
+        }
+        .intro-copy {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: .92rem;
+            line-height: 1.95;
+        }
+        .intro-copy p + p { margin-top: 18px; }
+        .principles {
+            border-top: 1px solid var(--border);
+        }
+        .principle {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 18px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .principle-symbol {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 1.15rem;
+        }
+        .principle h3 {
+            margin-bottom: 7px;
+            font-family: var(--display);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+        .principle p { color: var(--muted); font-size: .76rem; line-height: 1.7; }
+
+        .experience-panel {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            border: 1px solid var(--border);
+            background: rgba(17,17,17,.65);
+        }
+        .experience-aside {
+            padding: 38px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px;
+        }
+        .experience-aside .eyebrow { line-height: 1.8; }
+        .company-name {
+            font-family: var(--display);
+            font-size: clamp(2.4rem, 4vw, 4rem);
+            letter-spacing: -.07em;
+            line-height: .9;
+        }
+        .company-role {
+            margin-top: 15px;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: .65rem;
+            line-height: 1.7;
+            text-transform: uppercase;
+        }
+        .experience-content { padding: 38px; }
+        .experience-content h3 {
+            margin-bottom: 16px;
+            font-family: var(--display);
+            font-size: 1.55rem;
+            letter-spacing: -.04em;
+        }
+        .experience-content > p {
+            color: var(--muted);
+            font-size: .84rem;
+            line-height: 1.85;
+        }
+        .responsibility-list {
+            list-style: none;
+            margin-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+        .responsibility-list li {
+            position: relative;
+            padding: 13px 0 13px 20px;
+            border-bottom: 1px solid var(--border);
+            color: #c3c3c3;
+            font-size: .78rem;
+            line-height: 1.65;
+        }
+        .responsibility-list li::before {
+            content: "↗";
+            position: absolute;
+            left: 0;
+            top: 13px;
+            color: var(--accent);
+            font-family: var(--mono);
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .capability-card {
+            min-height: 245px;
+            padding: 27px;
+            border: 1px solid var(--border);
+            background: rgba(17,17,17,.55);
+            transition: .3s ease;
+        }
+        .capability-card:hover { background: var(--surface-hover); border-color: var(--border-light); transform: translateY(-4px); }
+        .capability-card .symbol { color: var(--accent); font-family: var(--mono); font-size: 1.2rem; }
+        .capability-card h3 {
+            margin: 42px 0 12px;
+            font-family: var(--display);
+            font-size: 1.45rem;
+            letter-spacing: -.05em;
+        }
+        .capability-card p { color: var(--muted); font-size: .77rem; line-height: 1.75; }
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 1px solid var(--border);
+        }
+        .workflow-step {
+            min-height: 190px;
+            padding: 24px 20px;
+            border-right: 1px solid var(--border);
+        }
+        .workflow-step:last-child { border-right: 0; }
+        .workflow-step .step-index { color: var(--accent); font-family: var(--mono); font-size: .62rem; }
+        .workflow-step h3 { margin: 35px 0 10px; font-family: var(--display); font-size: 1.15rem; }
+        .workflow-step p { color: var(--muted); font-size: .72rem; line-height: 1.65; }
+
+        .tool-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+        .tool-tag {
+            padding: 12px 15px;
+            border: 1px solid var(--border-light);
+            color: #c7c7c7;
+            font-family: var(--mono);
+            font-size: .65rem;
+            letter-spacing: .04em;
+        }
+        .note {
+            margin-top: 24px;
+            max-width: 650px;
+            color: var(--muted);
+            font-size: .76rem;
+            line-height: 1.75;
+        }
+
+        .closing {
+            padding: 110px 0 125px;
+            border-top: 1px solid var(--border);
+        }
+        .closing h2 {
+            margin: 18px 0 22px;
+            font-family: var(--display);
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            line-height: .84;
+            letter-spacing: -.08em;
+            text-transform: uppercase;
+        }
+        .closing h2 span {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(245,245,245,.7);
+        }
+        .closing p { max-width: 470px; color: var(--muted); font-size: .85rem; line-height: 1.8; }
+        .closing-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+
+        footer {
+            width: min(calc(100% - 48px), var(--max-width));
+            margin: auto;
+            padding: 25px 0 30px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: .55rem;
+            letter-spacing: .08em;
+        }
+
+        @media (max-width: 900px) {
+            .hero-mark { opacity: .35; right: -5%; width: 42vw; }
+            .intro-grid { grid-template-columns: 1fr; gap: 42px; }
+            .capability-grid { grid-template-columns: repeat(2, 1fr); }
+            .workflow { grid-template-columns: repeat(2, 1fr); }
+            .workflow-step { border-bottom: 1px solid var(--border); }
+            .workflow-step:nth-child(2n) { border-right: 0; }
+            .workflow-step:last-child { grid-column: span 2; }
+        }
+        @media (max-width: 650px) {
+            .site-header { width: calc(100% - 28px); height: 70px; }
+            .header-nav, .header-action { display: none; }
+            .container, footer { width: calc(100% - 28px); }
+            .hero { min-height: 760px; padding-top: 130px; }
+            .hero h1 { font-size: clamp(4rem, 18vw, 6.5rem); }
+            .hero-mark { width: 75vw; right: -30%; top: 70%; opacity: .22; }
+            .section { padding: 85px 0; }
+            .section-heading { display: block; margin-bottom: 35px; }
+            .section-intro { margin-top: 22px; }
+            .experience-panel { grid-template-columns: 1fr; }
+            .experience-aside { min-height: 230px; border-right: 0; border-bottom: 1px solid var(--border); }
+            .experience-content, .experience-aside { padding: 27px; }
+            .capability-grid { grid-template-columns: 1fr; }
+            .capability-card { min-height: 205px; }
+            .capability-card h3 { margin-top: 28px; }
+            .workflow { grid-template-columns: 1fr; }
+            .workflow-step, .workflow-step:nth-child(2n) { min-height: auto; border-right: 0; }
+            .workflow-step:last-child { grid-column: auto; }
+            .workflow-step h3 { margin-top: 20px; }
+            footer { flex-direction: column; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="../index.html" class="logo" aria-label="Voltar à página inicial">ER<span>.</span></a>
+        <nav class="header-nav" aria-label="Navegação principal">
+            <a href="../index.html">Início</a>
+            <a href="#atuacao">Atuação</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#competencias">Competências</a>
+        </nav>
+        <a href="../index.html#contato" class="header-action">Contato <span>↗</span></a>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <p class="eyebrow">Qualidade de software / Estratégia e validação</p>
+                <h1>Quality <span>Assurance.</span></h1>
+                <p class="hero-subtitle">Qualidade como parte de todo o processo.</p>
+                <p class="hero-description">
+                    Minha atuação em Quality Assurance combina planejamento, validação técnica,
+                    organização de processos e comunicação com stakeholders. O objetivo é
+                    identificar riscos, dar visibilidade à qualidade das entregas e apoiar equipes
+                    na construção de soluções mais consistentes.
+                </p>
+                <a href="#experiencia" class="button button-primary">Conheça minha experiência <span>↘</span></a>
+            </div>
+            <div class="hero-mark" aria-hidden="true">
+                <div class="hero-mark-core">Q<span>.</span>A</div>
+            </div>
+        </section>
+
+        <section class="section container" id="atuacao">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Atuação</p>
+                    <h2>Qualidade<br>em cada etapa.</h2>
+                </div>
+                <p class="section-intro">
+                    QA não se resume a encontrar defeitos no produto final. É uma prática contínua
+                    que envolve critérios claros, prevenção de problemas, validação e colaboração.
+                </p>
+            </div>
+
+            <div class="intro-grid">
+                <div class="intro-copy">
+                    <p>
+                        Entendo Quality Assurance como uma frente que conecta requisitos,
+                        expectativas e entregas. Para isso, é importante estabelecer critérios
+                        de aceite, planejar os testes de acordo com os riscos e manter uma
+                        comunicação objetiva sobre resultados, impedimentos e pontos de atenção.
+                    </p>
+                    <p>
+                        Na prática, procuro aproximar QA das demais áreas envolvidas no projeto,
+                        contribuindo para que a qualidade seja considerada desde o planejamento
+                        até a validação das entregas — e não apenas ao final do desenvolvimento.
+                    </p>
+                </div>
+
+                <div class="principles">
+                    <article class="principle">
+                        <span class="principle-symbol">◇</span>
+                        <div>
+                            <h3>Prevenção e planejamento</h3>
+                            <p>Definição de estratégias, critérios e prioridades antes da execução dos testes.</p>
+                        </div>
+                    </article>
+                    <article class="principle">
+                        <span class="principle-symbol">◎</span>
+                        <div>
+                            <h3>Validação orientada a critérios</h3>
+                            <p>Verificação das entregas com base em requisitos e critérios de aceite definidos.</p>
+                        </div>
+                    </article>
+                    <article class="principle">
+                        <span class="principle-symbol">↗</span>
+                        <div>
+                            <h3>Colaboração e melhoria contínua</h3>
+                            <p>Compartilhamento de resultados e alinhamento com as pessoas envolvidas no projeto.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="experiencia">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Experiência profissional</p>
+                    <h2>Da estruturação<br>à execução.</h2>
+                </div>
+                <p class="section-intro">
+                    Experiência em ambiente de tecnologia e automação, com participação direta
+                    na organização e no direcionamento das práticas de QA.
+                </p>
+            </div>
+
+            <div class="experience-panel">
+                <aside class="experience-aside">
+                    <div>
+                        <p class="eyebrow">JUN. 2025 — JUL. 2026</p>
+                    </div>
+                    <div>
+                        <h3 class="company-name">BITi9<span class="accent">.</span></h3>
+                        <p class="company-role">Quality Assurance, Processos<br>e Desenvolvimento — Estagiário</p>
+                    </div>
+                </aside>
+                <div class="experience-content">
+                    <h3>Estruturação e direcionamento de QA</h3>
+                    <p>
+                        Durante minha atuação na BITi9, assumi responsabilidade direta pelo
+                        desenvolvimento e direcionamento das atividades de Quality Assurance.
+                        Trabalhei na organização das práticas de qualidade e na aproximação
+                        entre as validações técnicas, as necessidades dos projetos e as
+                        expectativas dos stakeholders.
+                    </p>
+                    <ul class="responsibility-list">
+                        <li>Estruturação de planos de QA, estratégias de validação e acompanhamento de objetivos e OKRs.</li>
+                        <li>Definição e utilização de critérios de aceite para orientar validações e verificar entregas.</li>
+                        <li>Execução de testes funcionais, homologações e reviews técnicos.</li>
+                        <li>Organização de atividades, compartilhamento de conhecimento e padronização de práticas de qualidade.</li>
+                        <li>Contato direto com clientes e stakeholders para alinhamentos, validações e priorização de esforços de teste.</li>
+                        <li>Identificação de falhas, riscos e oportunidades de melhoria nos processos e nas entregas.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="competencias">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Competências</p>
+                    <h2>Frentes de<br>qualidade.</h2>
+                </div>
+                <p class="section-intro">
+                    Competências desenvolvidas na prática, conectando organização, análise
+                    técnica e relacionamento com as equipes.
+                </p>
+            </div>
+
+            <div class="capability-grid">
+                <article class="capability-card">
+                    <span class="symbol">01 /</span>
+                    <h3>QA Strategy</h3>
+                    <p>Planejamento de QA, organização de prioridades, planos de teste e acompanhamento de objetivos.</p>
+                </article>
+                <article class="capability-card">
+                    <span class="symbol">02 /</span>
+                    <h3>Testes e validação</h3>
+                    <p>Testes funcionais, homologações, validação de requisitos e verificação de critérios de aceite.</p>
+                </article>
+                <article class="capability-card">
+                    <span class="symbol">03 /</span>
+                    <h3>Technical Reviews</h3>
+                    <p>Revisão técnica de entregas, análise de inconsistências e registro de pontos de atenção.</p>
+                </article>
+                <article class="capability-card">
+                    <span class="symbol">04 /</span>
+                    <h3>Stakeholder Communication</h3>
+                    <p>Alinhamento com clientes e equipes para esclarecer expectativas, riscos e prioridades.</p>
+                </article>
+                <article class="capability-card">
+                    <span class="symbol">05 /</span>
+                    <h3>Process Improvement</h3>
+                    <p>Identificação de falhas e oportunidades para tornar fluxos de trabalho mais claros e eficientes.</p>
+                </article>
+                <article class="capability-card">
+                    <span class="symbol">06 /</span>
+                    <h3>Team Collaboration</h3>
+                    <p>Organização das atividades, compartilhamento de conhecimento e colaboração multidisciplinar.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section container">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Abordagem de trabalho</p>
+                    <h2>Um ciclo<br>contínuo.</h2>
+                </div>
+                <p class="section-intro">
+                    Uma visão de trabalho que ajuda a transformar requisitos e expectativas
+                    em validações rastreáveis e oportunidades de evolução.
+                </p>
+            </div>
+
+            <div class="workflow">
+                <article class="workflow-step">
+                    <span class="step-index">01</span>
+                    <h3>Entender</h3>
+                    <p>Compreender requisitos, contexto, expectativas e riscos.</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="step-index">02</span>
+                    <h3>Planejar</h3>
+                    <p>Definir critérios de aceite, prioridades e estratégia de validação.</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="step-index">03</span>
+                    <h3>Testar</h3>
+                    <p>Executar testes e registrar resultados, evidências e inconsistências.</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="step-index">04</span>
+                    <h3>Validar</h3>
+                    <p>Verificar os resultados e alinhar os próximos passos com os envolvidos.</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="step-index">05</span>
+                    <h3>Evoluir</h3>
+                    <p>Aplicar aprendizados e aprimorar continuamente as práticas de qualidade.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section container">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Ferramentas e documentação</p>
+                    <h2>Organização<br>e rastreabilidade.</h2>
+                </div>
+                <p class="section-intro">
+                    Além da execução dos testes, a documentação e o acompanhamento são
+                    importantes para dar contexto e visibilidade ao trabalho de QA.
+                </p>
+            </div>
+            <div class="tool-tags">
+                <span class="tool-tag">Acceptance Criteria</span>
+                <span class="tool-tag">Test Plans</span>
+                <span class="tool-tag">Functional Testing</span>
+                <span class="tool-tag">Homologation</span>
+                <span class="tool-tag">Technical Reviews</span>
+                <span class="tool-tag">OKRs</span>
+                <span class="tool-tag">PDD</span>
+                <span class="tool-tag">SDD</span>
+                <span class="tool-tag">Flowcharts</span>
+                <span class="tool-tag">Stakeholder Alignment</span>
+            </div>
+            <p class="note">
+                As ferramentas e práticas apresentadas refletem atividades e métodos utilizados
+                na experiência profissional. A página poderá ser ampliada com exemplos de planos
+                de teste, evidências e projetos que possam ser divulgados publicamente.
+            </p>
+        </section>
+
+        <section class="closing container">
+            <p class="eyebrow">Vamos conversar</p>
+            <h2>Qualidade é<br><span>construída.</span></h2>
+            <p>
+                Tenho interesse em contribuir com equipes que valorizam processos claros,
+                colaboração e qualidade durante todo o desenvolvimento.
+            </p>
+            <div class="closing-actions">
+                <a href="../index.html#contato" class="button button-primary">Entrar em contato <span>↗</span></a>
+                <a href="../index.html" class="button">Voltar ao portfólio <span>↖</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>EDUARDO RAMALHO MORAES</span>
+        <span>© 2026</span>
+        <span>QUALITY ASSURANCE</span>
+    </footer>
+</body>
+</html>

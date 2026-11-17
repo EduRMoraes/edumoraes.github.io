@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Portfólio de Eduardo Ramalho Moraes — Qualidade, Processos, Desenvolvimento de Software, Inteligência Artificial e Design Narrativo."
+    >
+
+    <title>Eduardo Ramalho Moraes — Portfólio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #f5f5f5;
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::selection {
+            background: #f5f5f5;
+            color: #0a0a0a;
+        }
+
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #171717;
+
+            --border: #292929;
+            --border-light: #3a3a3a;
+
+            --white: #f5f5f5;
+            --muted: #777777;
+
+            --accent: #a78bfa;
+
+            --display: "Space Grotesk", sans-serif;
+            --body: "Inter", sans-serif;
+            --mono: "DM Mono", monospace;
+
+            --max-width: 1380px;
+        }
+
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+            z-index: -1;
+
+            opacity: 0.035;
+
+            background-image:
+                linear-gradient(to right, #ffffff 1px, transparent 1px),
+                linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+
+            background-size: 80px 80px;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            position: fixed;
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: min(calc(100% - 48px), var(--max-width));
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            z-index: 100;
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            background: rgba(10,10,10,0.82);
+
+            backdrop-filter: blur(18px);
+        }
+
+        .logo {
+            font-family: var(--display);
+            font-size: 1.5rem;
+            font-weight: 700;
+
+            letter-spacing: -0.08em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 38px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: var(--muted);
+
+            font-family: var(--mono);
+            font-size: 0.68rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+
+            transition: color 0.25s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -10px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--white);
+
+            transition: width 0.25s ease;
+        }
+
+        nav a:hover {
+            color: var(--white);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-button {
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+
+            padding: 10px 16px;
+
+            font-family: var(--mono);
+            font-size: 0.65rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            transition: 0.25s ease;
+        }
+
+        .header-button span {
+            color: var(--accent);
+            margin-left: 8px;
+        }
+
+        .header-button:hover {
+            background: var(--white);
+            color: var(--background);
+        }
+
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        .section {
+            width: min(calc(100% - 48px), var(--max-width));
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: var(--muted);
+
+            font-family: var(--mono);
+            font-size: 0.65rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding-top: 100px;
+
+            border-left: 1px solid rgba(255,255,255,0.06);
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            width: 68%;
+        }
+
+        .hero h1 {
+            margin: 25px 0;
+
+            font-family: var(--display);
+
+            font-size: clamp(4rem, 8vw, 8.5rem);
+
+            line-height: 0.82;
+            letter-spacing: -0.08em;
+
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: transparent;
+
+            -webkit-text-stroke: 1px rgba(245,245,245,0.7);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            gap: 9px;
+
+            color: var(--white);
+
+            font-family: var(--mono);
+            font-size: 0.65rem;
+
+            text-transform: uppercase;
+        }
+
+        .dot {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 510px;
+
+            margin: 30px 0;
+
+            color: var(--muted);
+
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+
+            padding: 15px 20px;
+
+            border: 1px solid var(--border-light);
+
+            font-family: var(--mono);
+            font-size: 0.65rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            transition: 0.3s ease;
+        }
+
+        .button span {
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover span {
+            transform: translate(4px, -4px);
+        }
+
+        .button-primary {
+            background: var(--white);
+            color: var(--background);
+
+            border-color: var(--white);
+        }
+
+        .button-primary:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .hero-visual {
+            position: absolute;
+
+            right: 3%;
+            top: 50%;
+
+            width: min(40vw, 560px);
+            height: min(40vw, 560px);
+
+            transform: translateY(-45%);
+        }
+
+        .orbital {
+            position: absolute;
+
+            inset: 15%;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            transform: rotate(45deg) skew(-8deg, -8deg);
+        }
+
+        .orbital-two {
+            inset: 27%;
+
+            transform: rotate(-35deg);
+
+            border-color: rgba(167,139,250,0.25);
+        }
+
+        .orbital-three {
+            inset: 5%;
+
+            transform: rotate(75deg);
+
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .tech-core {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            width: 105px;
+            height: 105px;
+
+            transform: translate(-50%, -50%) rotate(45deg);
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid rgba(255,255,255,0.45);
+
+            background: rgba(10,10,10,0.65);
+        }
+
+        .tech-core span {
+            transform: rotate(-45deg);
+
+            font-family: var(--display);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .node {
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--white);
+
+            box-shadow: 0 0 18px rgba(255,255,255,0.45);
+        }
+
+        .node.one {
+            top: 18%;
+            left: 22%;
+        }
+
+        .node.two {
+            top: 28%;
+            right: 12%;
+        }
+
+        .node.three {
+            bottom: 17%;
+            left: 18%;
+        }
+
+        .node.four {
+            bottom: 27%;
+            right: 20%;
+        }
+
+        .connection {
+            position: absolute;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.35),
+                    transparent
+                );
+        }
+
+        .connection.one {
+            width: 180px;
+
+            top: 28%;
+            left: 24%;
+
+            transform: rotate(16deg);
+        }
+
+        .connection.two {
+            width: 170px;
+
+            top: 60%;
+            right: 18%;
+
+            transform: rotate(-35deg);
+        }
+
+        .connection.three {
+            width: 150px;
+
+            bottom: 26%;
+            left: 20%;
+
+            transform: rotate(-18deg);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+
+            bottom: 30px;
+            left: 35px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+
+            color: var(--muted);
+
+            font-family: var(--mono);
+            font-size: 0.55rem;
+
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+
+            background:
+                linear-gradient(
+                    var(--muted),
+                    transparent
+                );
+        }
+
+
+        /* =========================================================
+           EXPERTISE
+        ========================================================= */
+
+        .expertise {
+            padding: 150px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+
+            gap: 40px;
+
+            margin-bottom: 60px;
+        }
+
+        .section-heading h2 {
+            margin-top: 12px;
+
+            font-family: var(--display);
+
+            font-size: clamp(2.8rem, 5vw, 5rem);
+
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+        }
+
+        .section-intro {
+            max-width: 350px;
+
+            color: var(--muted);
+
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .expertise-grid {
+            display: grid;
+
+            grid-template-columns: repeat(6, 1fr);
+
+            gap: 12px;
+        }
+
+        .card {
+            min-height: 390px;
+
+            grid-column: span 2;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            padding: 28px;
+
+            border: 1px solid var(--border);
+
+            background: rgba(17,17,17,0.65);
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .card:nth-child(4),
+        .card:nth-child(5) {
+            grid-column: span 3;
+
+            min-height: 340px;
+        }
+
+        .card:hover {
+            background: var(--surface-hover);
+
+            border-color: var(--border-light);
+
+            transform: translateY(-5px);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-number {
+            color: var(--muted);
+
+            font-family: var(--mono);
+            font-size: 0.6rem;
+        }
+
+        .card-icon {
+            color: var(--accent);
+
+            font-family: var(--mono);
+            font-size: 1.35rem;
+        }
+
+        .card h3 {
+            font-family: var(--display);
+
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+
+            line-height: 0.92;
+            letter-spacing: -0.05em;
+
+            text-transform: uppercase;
+        }
+
+        .card p {
+            max-width: 320px;
+
+            margin-top: 18px;
+
+            color: var(--muted);
+
+            font-size: 0.78rem;
+            line-height: 1.65;
+        }
+
+        .card-link {
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--white);
+
+            font-family: var(--mono);
+            font-size: 0.6rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .card-link span:last-child {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about {
+            padding: 130px 0;
+
+            display: grid;
+
+            grid-template-columns: 1fr 3fr;
+
+            gap: 60px;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .about-main {
+            display: grid;
+
+            grid-template-columns: 1.2fr 0.8fr;
+
+            gap: 100px;
+        }
+
+        .about h2 {
+            font-family: var(--display);
+
+            font-size: clamp(3rem, 6vw, 6rem);
+
+            line-height: 0.9;
+            letter-spacing: -0.07em;
+        }
+
+        .about h2 span {
+            color: transparent;
+
+            -webkit-text-stroke: 1px rgba(245,245,245,0.65);
+        }
+
+        .about-copy {
+            align-self: end;
+        }
+
+        .about-copy p {
+            margin-bottom: 18px;
+
+            color: var(--muted);
+
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .text-link {
+            display: inline-flex;
+
+            gap: 18px;
+
+            margin-top: 10px;
+
+            padding-bottom: 8px;
+
+            border-bottom: 1px solid var(--border-light);
+
+            font-family: var(--mono);
+            font-size: 0.6rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .text-link span {
+            color: var(--accent);
+        }
+
+
+        /* =========================================================
+           EXPERIÊNCIA
+        ========================================================= */
+
+        .experience {
+            padding: 130px 0;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .experience-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1.4fr 2fr 60px;
+
+            gap: 40px;
+
+            align-items: center;
+
+            padding: 35px 0;
+
+            border-top: 1px solid var(--border);
+
+            transition: 0.3s ease;
+        }
+
+        .experience-row:hover {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .experience-date {
+            color: var(--muted);
+
+            font-family: var(--mono);
+            font-size: 0.6rem;
+        }
+
+        .experience-company h3 {
+            font-family: var(--display);
+            font-size: 1.4rem;
+
+            text-transform: uppercase;
+        }
+
+        .experience-company p,
+        .experience-description {
+            color: var(--muted);
+
+            font-size: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .arrow {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--border);
+
+            transition: 0.25s ease;
+        }
+
+        .arrow:hover {
+            background: var(--white);
+            color: var(--background);
+        }
+
+
+        /* =========================================================
+           FORMAÇÃO
+        ========================================================= */
+
+        .education {
+            padding: 130px 0;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .education-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .education-card {
+            min-height: 280px;
+
+            padding: 30px;
+
+            border: 1px solid var(--border);
+
+            background: rgba(17,17,17,0.5);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition: 0.3s ease;
+        }
+
+        .education-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-light);
+        }
+
+        .education-year {
+            color: var(--muted);
+
+            font-family: var(--mono);
+            font-size: 0.6rem;
+        }
+
+        .education-card h3 {
+            margin-top: 20px;
+
+            font-family: var(--display);
+
+            font-size: 1.8rem;
+
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .education-card p {
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            padding: 150px 0;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .contact h2 {
+            margin: 20px 0 25px;
+
+            font-family: var(--display);
+
+            font-size: clamp(4rem, 9vw, 9rem);
+
+            line-height: 0.8;
+            letter-spacing: -0.08em;
+
+            text-transform: uppercase;
+        }
+
+        .contact h2 span {
+            color: transparent;
+
+            -webkit-text-stroke: 1px rgba(245,245,245,0.7);
+        }
+
+        .contact-description {
+            max-width: 430px;
+
+            color: var(--muted);
+
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 35px;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            width: min(calc(100% - 48px), var(--max-width));
+
+            margin: auto;
+
+            padding: 25px 0 30px;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--muted);
+
+            border-top: 1px solid var(--border);
+
+            font-family: var(--mono);
+            font-size: 0.55rem;
+
+            letter-spacing: 0.08em;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .hero-content {
+                width: 80%;
+            }
+
+            .hero-visual {
+                opacity: 0.4;
+
+                width: 55vw;
+                height: 55vw;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card,
+            .card:nth-child(4),
+            .card:nth-child(5) {
+                grid-column: span 1;
+
+                min-height: 340px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-main {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .experience-row {
+                grid-template-columns: 1fr 1.5fr 2fr 50px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                width: calc(100% - 28px);
+                height: 70px;
+            }
+
+            nav,
+            .header-button {
+                display: none;
+            }
+
+            .section,
+            footer {
+                width: calc(100% - 28px);
+            }
+
+            .hero {
+                min-height: 900px;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.4rem, 17vw, 6rem);
+            }
+
+            .hero-meta {
+                max-width: 330px;
+
+                line-height: 1.8;
+            }
+
+            .hero-visual {
+                width: 90vw;
+                height: 90vw;
+
+                right: -25%;
+                top: 70%;
+
+                opacity: 0.25;
+            }
+
+            .expertise,
+            .about,
+            .experience,
+            .education,
+            .contact {
+                padding: 90px 0;
+            }
+
+            .section-heading {
+                display: block;
+
+                margin-bottom: 35px;
+            }
+
+            .section-intro {
+                margin-top: 25px;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+            .card:nth-child(4),
+            .card:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .about-main h2 {
+                font-size: clamp(3.3rem, 16vw, 6rem);
+            }
+
+            .experience-row {
+                grid-template-columns: 1fr 1fr;
+
+                gap: 20px;
+            }
+
+            .experience-description {
+                grid-column: span 2;
+            }
+
+            .arrow {
+                justify-self: end;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact h2 {
+                font-size: clamp(4rem, 18vw, 7rem);
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header>
+
+        <a href="#home" class="logo">
+            ER<span>.</span>
+        </a>
+
+        <nav>
+
+            <a href="#home">Início</a>
+            <a href="#areas">Áreas</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#contato">Contato</a>
+
+        </nav>
+
+        <a href="#contato" class="header-button">
+            Vamos conversar <span>↗</span>
+        </a>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="hero section" id="home">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    Olá, eu sou / Perfil profissional
+                </p>
+
+                <h1>
+                    Eduardo<br>
+                    <span>Ramalho Moraes</span>
+                </h1>
+
+                <div class="hero-meta">
+
+                    <span>Engenharia da Computação</span>
+
+                    <span class="dot">•</span>
+
+                    <span>QA</span>
+
+                    <span class="dot">•</span>
+
+                    <span>Processos</span>
+
+                    <span class="dot">•</span>
+
+                    <span>Software</span>
+
+                    <span class="dot">•</span>
+
+                    <span>IA</span>
+
+                    <span class="dot">•</span>
+
+                    <span>Narrativa</span>
+
+                </div>
+
+                <p class="hero-description">
+                    Profissional de tecnologia com atuação multidisciplinar
+                    em qualidade, processos, desenvolvimento, inteligência
+                    artificial e design narrativo.
+                </p>
+
+                <a href="#areas" class="button button-primary">
+
+                    Explorar portfólio
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- VISUAL ABSTRATO -->
+
+            <div class="hero-visual">
+
+                <div class="orbital"></div>
+
+                <div class="orbital orbital-two"></div>
+
+                <div class="orbital orbital-three"></div>
+
+                <div class="tech-core">
+                    <span>ER</span>
+                </div>
+
+                <div class="node one"></div>
+                <div class="node two"></div>
+                <div class="node three"></div>
+                <div class="node four"></div>
+
+                <div class="connection one"></div>
+                <div class="connection two"></div>
+                <div class="connection three"></div>
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                <span>ROLE PARA EXPLORAR</span>
+
+                <span class="scroll-line"></span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ÁREAS
+        ====================================================== -->
+
+        <section class="expertise section" id="areas">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        01 / Áreas de atuação
+                    </p>
+
+                    <h2>
+                        O que eu faço.
+                    </h2>
+
+                </div>
+
+                <p class="section-intro">
+                    Conheça as principais áreas em que desenvolvi
+                    experiência profissional, acadêmica e prática.
+                </p>
+
+            </div>
+
+
+            <div class="expertise-grid">
+
+
+                <!-- QA -->
+
+                <a href="pages/quality-assurance.html" class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-number">
+                            01
+                        </span>
+
+                        <span class="card-icon">
+                            ◇
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Quality<br>
+                            Assurance
+                        </h3>
+
+                        <p>
+                            Estratégias de qualidade, testes, validações,
+                            critérios de aceite e acompanhamento de
+                            entregas de software.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+
+                        <span>
+                            Ver área
+                        </span>
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- PROCESSOS -->
+
+                <a href="pages/analise-de-processos.html" class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-number">
+                            02
+                        </span>
+
+                        <span class="card-icon">
+                            ◎
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Análise de<br>
+                            Processos
+                        </h3>
+
+                        <p>
+                            Mapeamento, levantamento de requisitos,
+                            documentação, identificação de falhas
+                            e melhoria contínua.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+
+                        <span>
+                            Ver área
+                        </span>
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- SOFTWARE -->
+
+                <a href="pages/desenvolvimento-de-software.html" class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-number">
+                            03
+                        </span>
+
+                        <span class="card-icon">
+                            &lt;/&gt;
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Desenvolvimento<br>
+                            de Software
+                        </h3>
+
+                        <p>
+                            Programação, sistemas, aplicações e
+                            desenvolvimento de soluções utilizando
+                            diferentes tecnologias.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+
+                        <span>
+                            Ver área
+                        </span>
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- IA -->
+
+                <a href="pages/inteligencia-artificial.html" class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-number">
+                            04
+                        </span>
+
+                        <span class="card-icon">
+                            ◉
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Inteligência<br>
+                            Artificial
+                        </h3>
+
+                        <p>
+                            Aplicação de IA, automação inteligente,
+                            geração de documentação e desenvolvimento
+                            de soluções baseadas em inteligência artificial.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+
+                        <span>
+                            Ver área
+                        </span>
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- NARRATIVA -->
+
+                <a href="pages/design-narrativo.html" class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-number">
+                            05
+                        </span>
+
+                        <span class="card-icon">
+                            △
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Design<br>
+                            Narrativo
+                        </h3>
+
+                        <p>
+                            Desenvolvimento de histórias, personagens,
+                            mundos e experiências narrativas para jogos.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+
+                        <span>
+                            Ver área
+                        </span>
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SOBRE
+        ====================================================== -->
+
+        <section class="about section" id="sobre">
+
+            <div>
+
+                <p class="eyebrow">
+                    02 / Sobre mim
+                </p>
+
+            </div>
+
+
+            <div class="about-main">
+
+                <h2>
+
+                    Tecnologia<br>
+
+                    <span>e criatividade.</span>
+
+                </h2>
+
+
+                <div class="about-copy">
+
+                    <p>
+                        Sou estudante de Bacharelado em Engenharia da
+                        Computação e profissional com experiência em
+                        qualidade de software, processos, automação,
+                        desenvolvimento e narrativa para jogos.
+                    </p>
+
+                    <p>
+                        Minha atuação combina raciocínio técnico,
+                        comunicação, organização e criatividade para
+                        entender problemas e construir soluções.
+                    </p>
+
+                    <a href="pages/sobre.html" class="text-link">
+
+                        Conheça minha trajetória
+
+                        <span>↗</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EXPERIÊNCIA
+        ====================================================== -->
+
+        <section class="experience section" id="experiencia">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        03 / Experiência profissional
+                    </p>
+
+                    <h2>
+                        Onde trabalhei.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT RENAISSANCE -->
+
+            <div class="experience-row">
+
+                <div class="experience-date">
+                    AGO. 2026 — ATUAL
+                </div>
+
+                <div class="experience-company">
+
+                    <h3>
+                        Project Renaissance
+                    </h3>
+
+                    <p>
+                        Designer Narrativo
+                    </p>
+
+                </div>
+
+                <p class="experience-description">
+                    Desenvolvimento e validação de histórias,
+                    personagens, mundo e elementos narrativos do jogo,
+                    trabalhando em conjunto com a equipe de narrativa
+                    e acompanhando prazos e entregas do projeto.
+                </p>
+
+                <a
+                    href="pages/experiencia.html"
+                    class="arrow"
+                >
+                    ↗
+                </a>
+
+            </div>
+
+
+
+            <!-- BITI9 -->
+
+            <div class="experience-row">
+
+                <div class="experience-date">
+                    JUN. 2025 — JUL. 2026
+                </div>
+
+                <div class="experience-company">
+
+                    <h3>
+                        BITi9
+                    </h3>
+
+                    <p>
+                        QA · Processos · Desenvolvimento
+                    </p>
+
+                </div>
+
+                <p class="experience-description">
+                    Atuação em Quality Assurance, análise de processos,
+                    automação e desenvolvimento, incluindo estruturação
+                    da área de QA e comunicação direta com stakeholders.
+                </p>
+
+                <a
+                    href="pages/experiencia.html"
+                    class="arrow"
+                >
+                    ↗
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FORMAÇÃO
+        ====================================================== -->
+
+        <section class="education section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        04 / Formação
+                    </p>
+
+                    <h2>
+                        Formação acadêmica.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="education-grid">
+
+
+                <!-- UNISAL -->
+
+                <div class="education-card">
+
+                    <div>
+
+                        <span class="education-year">
+                            2025 — ATUAL
+                        </span>
+
+                        <h3>
+                            Bacharelado em<br>
+                            Engenharia da Computação
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        UNISAL — Campus Maria Auxiliadora
+                    </p>
+
+                </div>
+
+
+                <!-- ETEC -->
+
+                <div class="education-card">
+
+                    <div>
+
+                        <span class="education-year">
+                            2022 — 2024
+                        </span>
+
+                        <h3>
+                            Técnico em<br>
+                            Desenvolvimento de Sistemas
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        ETEC Polivalente de Americana
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CONTATO
+        ====================================================== -->
+
+        <section class="contact section" id="contato">
+
+            <p class="eyebrow">
+                05 / Contato
+            </p>
+
+            <h2>
+
+                Vamos criar<br>
+
+                algo <span>relevante.</span>
+
+            </h2>
+
+            <p class="contact-description">
+
+                Interessado no meu trabalho ou em conversar sobre
+                uma oportunidade? Entre em contato.
+
+            </p>
+
+
+            <div class="contact-buttons">
+
+                <!-- TROCAR PELO SEU E-MAIL -->
+
+                <a
+                    href="mailto:SEU_EMAIL_AQUI"
+                    class="button button-primary"
+                >
+
+                    Entrar em contato
+
+                    <span>↗</span>
+
+                </a>
+
+
+                <!-- TROCAR PELO SEU LINKEDIN -->
+
+                <a
+                    href="SEU_LINKEDIN_AQUI"
+                    class="button"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    LinkedIn
+
+                    <span>↗</span>
+
+                </a>
+
+
+                <!-- TROCAR PELO SEU GITHUB -->
+
+                <a
+                    href="SEU_GITHUB_AQUI"
+                    class="button"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    GitHub
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <span>
+            EDUARDO RAMALHO MORAES
+        </span>
+
+        <span>
+            © 2026
+        </span>
+
+        <span>
+            PORTFÓLIO PROFISSIONAL
+        </span>
+
+    </footer>
+
+
+</body>
+</html>
